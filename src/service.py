@@ -95,7 +95,7 @@ async def predict(input_data: AdmissionInput, context: bentoml.Context):
                              input_data.SOP, input_data.LOR, input_data.CGPA, input_data.Research]])
     
     # Make prediction
-    prediction = await model_runner.async_run(input_array)
+    prediction =  model_runner.async_run(input_array)
     
     # Return the prediction
     return {"username": username, "Chance of Admit": prediction[0]}
