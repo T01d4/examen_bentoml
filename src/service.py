@@ -19,8 +19,10 @@ fake_users_db = {
     }
 }
 
-# Load the saved model
-model_ref = bentoml.sklearn.get("admission_model:latest")
+import bentoml
+
+# Get the most recently created model
+model_ref = max(bentoml.models.list(), key=lambda m: m.creation_time)
 model_runner = model_ref.to_runner()
 
 # Create a BentoML service
